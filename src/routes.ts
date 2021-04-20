@@ -1,24 +1,12 @@
 // importando o router do express
 import { Router } from "express";
-import { getCustomRepository } from "typeorm";
-import { SettingsRepository } from "./repositories/SettingsRepository";
+import { SettingsController } from "./controllers/SettingsController";
+
 // inserindo o router em uma variável
 const routes = Router();
+// inserindo o controller na variável
+const settingsController = new SettingsController
 // criando a rota de settings
-routes.post("/settings", async (request, response) => {
-  // definindo o request body
-  const { chat, usermane } = request.body;
-  const settingsRepository = getCustomRepository(SettingsRepository);
-
-  const settings = settingsRepository.create ({
-    chat,
-    usermane
-  });
-
-  await settingsRepository.save(settings);
-  // retornando os dados em JSON
-  return response.json(settings);
-
-});
+routes.post("/settings",settingsController.create);
 
 export { routes };

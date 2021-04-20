@@ -10,7 +10,7 @@ class Setting {
   id: String;
 
   @Column()
-  usermane: String;
+  username: String;
 
   @Column()
   chat: Boolean;
