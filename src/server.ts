@@ -1,5 +1,7 @@
 // importando o express
 import express from "express";
+// importando o banco de dados
+import "./database";
 
 // colocando o express na variável app
 const app = express();
@@ -18,5 +20,5 @@ app.post("/users", (req, res) => {
 // define a porta que irá rodar o servidor
 app.listen(3333, () => console.log("Server is running on port 3333"));
 
-//código da aula 1 = missaoespacial
+
 
