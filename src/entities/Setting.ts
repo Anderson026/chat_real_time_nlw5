@@ -7,13 +7,13 @@ import { v4 as uuid } from "uuid"
 @Entity("settings")
 class Setting {
   @PrimaryColumn()
-  id: string;
+  id: String;
 
   @Column()
-  usermane: string;
+  usermane: String;
 
   @Column()
-  chat: boolean;
+  chat: Boolean;
 
   @UpdateDateColumn()
   updated_at: Date;

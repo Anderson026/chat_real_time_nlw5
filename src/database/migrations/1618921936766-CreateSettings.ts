@@ -33,10 +33,10 @@ export class CreateSettings1618921936766 implements MigrationInterface {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
-                    }
-                ]
+                    },
+                ],
             })
-        )
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
