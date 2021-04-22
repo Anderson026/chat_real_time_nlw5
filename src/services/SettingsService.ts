@@ -11,7 +11,7 @@ interface ISettingsCreate {
 // classe que terá a regra de negócio de Settings
 class SettingsService {
 
-  private settingsRepository: Repository<Setting>
+  private settingsRepository: Repository<Setting>;
 
   constructor() {
     this.settingsRepository = getCustomRepository(SettingsRepository);
@@ -37,6 +37,15 @@ class SettingsService {
 
     return settings;
   }
+
+  async findByUsername(username: string) {
+    const settings = await this.settingsRepository.findOne({
+      username,
+    });
+    return settings;
+  }  
 };
 
 export { SettingsService };
+
+// parei as 1:06:30 da aula 4 da nlw

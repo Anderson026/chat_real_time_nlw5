@@ -19,9 +19,19 @@ class SettingsController {
     }catch(err) {
       return response.status(400).json({
         message: err.message,
-      })
+      });
     }
+  }
+
+  async findByUsername(request: Request, response: Response) {
+    const { username } = request.params;
+
+    const settingsService = new SettingsService();
+
+    const settings = await settingsService.findByUsername(username);
+
+    return response.json(settings);
   }
 }
 
-export { SettingsController }
+export { SettingsController };
