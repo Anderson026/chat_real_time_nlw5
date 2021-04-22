@@ -44,8 +44,17 @@ class SettingsService {
     });
     return settings;
   }  
+
+  async update(username: string, chat: boolean) {
+    await this.settingsRepository.createQueryBuilder().
+      update(Setting)
+      .set({chat})
+      .where("username = :username", {
+        username
+      })
+      .execute();
+  }
 };
 
 export { SettingsService };
 
-// parei as 1:06:30 da aula 4 da nlw
