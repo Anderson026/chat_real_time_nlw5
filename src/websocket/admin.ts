@@ -39,6 +39,19 @@ io.on("connect", async socket => {
     io.to(socket_id).emit("admin_send_to_client", {
       text,
       socket_id: socket.id
-    })
+    });
+  });
+
+  // criando um evento para pegar um admin e adicionar ao usuário e a solicitação
+  // de atendimento sair da fila de espera
+  socket.on("admin_user_in_support", async params => {
+    const { user_id } = params;
+    await connectionsService.updateAdminID(user_id, socket.id);
+
+    const  allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
+    // emite o evento de listagem de mensagens 
+    io.emit("admin_list_all_users", allConnectionsWithoutAdmin);
+
+    // atualizar a lista da fila de espera
   })
 });
