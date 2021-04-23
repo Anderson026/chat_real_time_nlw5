@@ -25,6 +25,10 @@ app.set("view engine", "html");
 app.get("/pages/client", (request, response) => {
   return response.render("html/client.html");
 });
+// rota de teste admin
+app.get("/pages/admin", (request, response) => {
+  return response.render("html/admin.html");
+});
 
 // criando o protocolo http
 const http = createServer(app);
