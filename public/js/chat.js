@@ -1,3 +1,4 @@
+
 document.querySelector("#start_chat").addEventListener("click", (event) => {
   const socket = io();
 
@@ -54,6 +55,11 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
 
       }
     });
+  });
+
+  // evento que vai receber as mensagens do admin
+  socket.on("admin_send_to_client", message => {
+    console.log(message);
   });
 
 });
